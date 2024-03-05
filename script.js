@@ -39,17 +39,15 @@ app.ticker.add((delta) => {
         return;
     }
 
-
-
-    // Generování překážek
-    if (Math.random() < 0.1 + score * 0.001) {
+    // Generování rpřekážek
+    if (Math.random() < 0.01 + score * 0.00001) {
         spawnObstacle();
-    }
+    }   
 
     // Pohyb překážek a detekce kolizí
     for (let i = obstacles.length - 1; i >= 0; i--) {
         const obstacle = obstacles[i];
-        obstacle.x -= 5;
+        obstacle.x -= 3;
 
         // Detekce kolize s hráčem
         if (player.x < obstacle.x + obstacle.width / 2 &&
@@ -67,7 +65,7 @@ app.ticker.add((delta) => {
     }
 
     // Přidání skóre pouze jednou za každou překážku
-    score += obstacles.length * 0.01;
+    score += obstacles.length * 0.03;
     scoreText.text = `Score: ${score}`;
 });
 
